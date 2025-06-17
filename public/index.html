@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batalha Naval</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="menu-container">
+    <div style="margin-bottom: 12px;">
+      <img src="imgs/warship.png" alt="Navio" width="120" style="filter: drop-shadow(0 2px 8px #1e90ff55);">
+    </div>
+    <h1 style="font-family: 'Bebas Neue', Arial, sans-serif;">Batalha Naval</h1>
+    <input type="text" id="room-code" placeholder="Digite o código da sala" aria-label="Código da sala">
+    <div style="display: flex; flex-direction: column; gap: 10px; align-items: center;">
+      <button id="start-game">Iniciar Jogo</button>
+      <button id="show-rules">Regras</button>
+    </div>
+  </div>
+  <div id="setup-panel">
+    <div class="ships-panel">
+      <div><strong>Posicione seus navios:</strong></div>
+      <div class="ship" draggable="true" data-type="submarino" data-size="1" data-count="3">
+        <span class="ship-cell"></span>
+        <span class="ship-label">Submarino (x3)</span>
+      </div>
+      <div class="ship" draggable="true" data-type="torpedeiro" data-size="2" data-count="2">
+        <span class="ship-cell"></span><span class="ship-cell"></span>
+        <span class="ship-label">Torpedeiro (x2)</span>
+      </div>
+      <div class="ship" draggable="true" data-type="porta-aviao" data-size="3" data-count="1">
+        <span class="ship-cell"></span><span class="ship-cell"></span><span class="ship-cell"></span>
+        <span class="ship-label">Porta-Aviões (x1)</span>
+      </div>
+    </div>
+    <div>
+      <div style="margin-bottom: 8px;"><strong>Seu Tabuleiro (6x6):</strong></div>
+      <div id="player-board" class="board"></div>
+      <button id="confirm-ships" style="margin-top: 16px;">Confirmar Posições</button>
+    </div>
+  </div>
+  <div id="game-panel" style="display:none;">
+    <h2 style="text-align:center; font-family: 'Bebas Neue', Arial, sans-serif;">
+      Batalha em andamento
+    </h2>
+    <div id="turn-info" style="text-align:center; margin-bottom:16px; font-size:1.2em; color:#1e90ff;">
+      Vez de: <span id="turn-player">Você</span>
+    </div>
+    <div style="display:flex; justify-content:center; gap:40px; flex-wrap:wrap;">
+      <div>
+        <div style="text-align:center; margin-bottom:4px;"><strong>Seu Tabuleiro</strong></div>
+        <div id="my-board" class="board"></div>
+      </div>
+      <div>
+        <div style="text-align:center; margin-bottom:4px;"><strong>Tabuleiro do Oponente</strong></div>
+        <div id="opponent-board" class="board"></div>
+      </div>
+    </div>
+  </div>
+  <div id="rules-modal" class="modal hidden" aria-modal="true" role="dialog">
+    <div class="modal-content">
+      <h2 style="font-family: 'Bebas Neue', Arial, sans-serif;">Regras do Jogo</h2>
+      <ul style="text-align: left; margin: 0 auto 18px auto; max-width: 340px; color: #183153;">
+        <li>Cada jogador posiciona seus navios em um tabuleiro 6x6.</li>
+        <li>Os jogadores se alternam para atacar as posições do oponente.</li>
+        <li>O primeiro a afundar todos os navios do oponente vence.</li>
+      </ul>
+      <button id="close-rules" style="margin-top: 10px;">Fechar</button>
+    </div>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
