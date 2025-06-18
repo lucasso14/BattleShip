@@ -29,6 +29,13 @@ socket.on('startGame', (message) => {
   document.querySelector('.menu-container').style.display = 'none';
   document.getElementById('setup-panel').style.display = 'flex';
   highlightCurrentShip();
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key.toLowerCase() === 'o') {
+      orientation = orientation === 'horizontal' ? 'vertical' : 'horizontal';
+      alert('Orientação: ' + orientation);
+    }
+  });
 });
 
 socket.on('roomFull', (message) => {
@@ -56,13 +63,6 @@ for (let i = 0; i < 36; i++) {
   cell.addEventListener('click', handleCellClick);
   board.appendChild(cell);
 }
-
-document.addEventListener('keydown', (e) => {
-  if (e.key.toLowerCase() === 'o') {
-    orientation = orientation === 'horizontal' ? 'vertical' : 'horizontal';
-    alert('Orientação: ' + orientation);
-  }
-});
 
 function handleCellClick(e) {
   if (currentShipIndex >= shipsToPlace.length) return;
@@ -182,7 +182,7 @@ socket.on('attackResult', ({ index, hit, sunk, shipType, yourTurn, victory }) =>
     alert('Você venceu!');
     location.reload(); 
   } else if (hit) {
-    alert(sunk ? `Você afundou um ${shipType}! Jogue novamente.` : 'Acertou! Jogue novamente.');
+    alert('Acertou! Jogue novamente.');
   } else {
     alert('Errou!');
   }

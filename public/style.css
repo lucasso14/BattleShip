@@ -13,7 +13,6 @@ body {
   transition: background 0.5s;
 }
 
-/* Efeito de ondas no fundo */
 body::before, body::after {
   content: '';
   position: absolute;
@@ -204,30 +203,6 @@ button::after {
   margin-bottom: 10px;
 }
 
-/* .ship {
-  display: inline-block;
-  margin: 6px 0;
-  cursor: grab;
-  user-select: none;
-}
-
-.ship-cell {
-  display: inline-block;
-  width: 36px;
-  height: 36px;
-  background: #4682b4;
-  border: 2px solid #183153;
-  border-radius: 4px;
-  margin-right: 2px;
-}
-
-.ship-label {
-  margin-left: 10px;
-  font-size: 1rem;
-  color: #183153;
-  vertical-align: middle;
-} */
-
 @media (max-width: 500px) {
   .board {
     grid-template-columns: repeat(6, 28px);
@@ -254,7 +229,6 @@ button::after {
   display: flex;
   align-items: center;
   margin: 10px 0;
-  cursor: grab;
   user-select: none;
   padding: 6px 16px;
   border-radius: 12px;
